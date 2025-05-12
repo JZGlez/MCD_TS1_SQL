@@ -27,16 +27,25 @@ def add_author(author): # needs an object that represents all of the information
     sql_query = '''INSERT OR IGNORE INTO Authors (AuthorName)
     VALUES (?)'''
     with closing(conn.cursor()) as cursor:
-        cursor.execute(sql_query, (author.author_name,)) # representa al objeto employee
+        cursor.execute(sql_query, (author.author_name,)) # representa al objeto Author
         conn.commit()
 
 ### Book functions
 
-def add_book(book): # needs an object that represents all of the information of the author
+def add_book(book): # needs an object that represents all of the information of the book
     sql_query = '''INSERT OR IGNORE INTO Books (BookID, Title, ISBN, ISBN13, Language, PublicationYear, Publisher, NumPages)
     VALUES (?,?,?,?,?,?,?,?)'''
     with closing(conn.cursor()) as cursor:
         cursor.execute(sql_query, (book.bookid, book.title, book.isbn, book.isbn13,
                                    book.language, book.publication_year, book.publisher,
-                                   book.num_pages)) # representa al objeto employee
+                                   book.num_pages)) # representa al objeto book
+        conn.commit()
+
+### User functions
+
+def add_user(user): # needs an object that represents all of the information of the user
+    sql_query = '''INSERT OR IGNORE INTO Users (UserID, User)
+    VALUES (?,?)'''
+    with closing(conn.cursor()) as cursor:
+        cursor.execute(sql_query, (user.userid, user.user)) # representa al objeto user
         conn.commit()
