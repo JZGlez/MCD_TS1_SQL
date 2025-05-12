@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from objects import Author, Book
+from objects import Author, Book, User
 import db_functions
 from utils import remove_extra_spaces
 import os
@@ -10,6 +10,8 @@ df = pd.read_csv("../data/Goodreads_books_with_genres.csv")
 df = df.drop(axis=0, index=8180) # parche
 df = df.drop(axis=0, index=11098) # parche
 df['publication_date'] = pd.to_datetime(df['publication_date'], format='%m/%d/%Y')
+
+df_reviews = pd.read_csv('__/data/goodreads_reviews_formated.csv')
 
 # abrir conexion
 db_functions.connect()
@@ -43,6 +45,16 @@ for element in book_list:
                 num_pages=element[7])
     db_functions.add_book(book=book)
 print("Book table filled!")
+
+# Fill users table
+
+users_list = list(zip(df_reviews['user_id'],df_reviews['user']))
+
+for element in users_list:
+    user = User(userid=element[0],
+                user=element[1])
+    db_functions.add_user(user=user)
+print("User table filled!")
 
 ## Close connection to database
 db_functions.close()

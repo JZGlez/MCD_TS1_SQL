@@ -17,3 +17,8 @@ class Book:
         self.publication_year = publication_year
         self.publisher = publisher
         self.num_pages = num_pages
+
+class User:
+    def __init__(self, userid=0, user=None):
+        self.userid = userid
+        self.user = user
