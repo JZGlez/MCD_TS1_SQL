@@ -28,12 +28,12 @@ def add_author(author): # needs an object that represents all of the information
     sql_query = '''INSERT OR IGNORE INTO Authors (AuthorName)
     VALUES (?)'''
     with closing(conn.cursor()) as cursor:
-        cursor.execute(sql_query, (author.author_name,)) # representa al objeto employee
+        cursor.execute(sql_query, (author.author_name,)) # representa al objeto Author
         conn.commit()
 
 ### Book functions
 
-def add_book(book): # needs an object that represents all of the information of the author
+def add_book(book): # needs an object that represents all of the information of the book
     sql_query = '''INSERT OR IGNORE INTO Books (BookID, Title, ISBN, ISBN13, Language, PublicationYear, Publisher, NumPages)
     VALUES (?,?,?,?,?,?,?,?)'''
     with closing(conn.cursor()) as cursor:
@@ -81,3 +81,12 @@ def get_genres_dictionary():
     for index, row in df_genres.iterrows():
         genres_dict[row["GenreName"]] = int(row["GenreID"])
     return genres_dict
+
+### User functions
+
+def add_user(user): # needs an object that represents all of the information of the user
+    sql_query = '''INSERT OR IGNORE INTO Users (UserID, User)
+    VALUES (?,?)'''
+    with closing(conn.cursor()) as cursor:
+        cursor.execute(sql_query, (user.userid, user.user)) # representa al objeto user
+        conn.commit()

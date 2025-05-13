@@ -32,3 +32,7 @@ class BookGenre:
     def __init__(self, book_id = None, genre_id = None):
         self.bookId = book_id
         self.genreId = genre_id
+class User:
+    def __init__(self, userid=0, user=None):
+        self.userid = userid
+        self.user = user
