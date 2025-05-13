@@ -17,3 +17,18 @@ class Book:
         self.publication_year = publication_year
         self.publisher = publisher
         self.num_pages = num_pages
+
+class Genre:
+    def __init__(self, genreId = 0, genre_name = None):
+        self.genreId = genreId
+        self.genre_name = genre_name
+
+class BookAuthor:
+    def __init__(self, book_id = None, author_id = None):
+        self.bookId = book_id
+        self.authorId = author_id
+
+class BookGenre:
+    def __init__(self, book_id = None, genre_id = None):
+        self.bookId = book_id
+        self.genreId = genre_id

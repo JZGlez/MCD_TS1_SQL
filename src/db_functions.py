@@ -1,8 +1,9 @@
 # DATABASE LAYER
 
+import pandas as pd
 import sqlite3 as sql
 from contextlib import closing
-from objects import Author, Book
+from objects import Author, Book, Genre, BookAuthor, BookGenre
 
 # Variable global que representa el string de conexion
 conn = None
@@ -40,3 +41,43 @@ def add_book(book): # needs an object that represents all of the information of 
                                    book.language, book.publication_year, book.publisher,
                                    book.num_pages)) # representa al objeto employee
         conn.commit()
+
+# Agregar género
+def add_genre(genre: Genre): # needs an object that represents all of the information of the author
+    sql_query = '''INSERT OR IGNORE INTO Genres (GenreName)
+    VALUES (?)'''
+    with closing(conn.cursor()) as cursor:
+        cursor.execute(sql_query, (genre.genre_name,))
+        conn.commit()
+
+# Agregar BookAuthor
+def add_bookAuthor(bookAuthor: BookAuthor):
+    sql_query = '''INSERT OR IGNORE INTO BookAuthors (BookID, AuthorID)
+    VALUES (?,?)'''
+    with closing(conn.cursor()) as cursor:
+        cursor.execute(sql_query, (bookAuthor.bookId, bookAuthor.authorId))
+        conn.commit()
+
+# Agregar BookGenre
+def add_bookGenre(bookGenre: BookGenre):
+    sql_query = '''INSERT OR IGNORE INTO BookGenres (BookID, GenreID)
+    VALUES (?,?)'''
+    with closing(conn.cursor()) as cursor:
+        cursor.execute(sql_query, (bookGenre.bookId, bookGenre.genreId))
+        conn.commit()
+
+def get_authors_dictionary():
+    sql_query = '''SELECT * FROM Authors'''
+    df_authors = pd.read_sql_query(sql_query, conn)
+    authors_dict = {}
+    for index, row in df_authors.iterrows():
+        authors_dict[row["AuthorName"]] = int(row["AuthorID"])
+    return authors_dict
+
+def get_genres_dictionary():
+    sql_query = '''SELECT * FROM Genres'''
+    df_genres = pd.read_sql_query(sql_query, conn)
+    genres_dict = {}
+    for index, row in df_genres.iterrows():
+        genres_dict[row["GenreName"]] = int(row["GenreID"])
+    return genres_dict
