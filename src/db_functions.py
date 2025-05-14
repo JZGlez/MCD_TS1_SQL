@@ -49,3 +49,14 @@ def add_user(user): # needs an object that represents all of the information of 
     with closing(conn.cursor()) as cursor:
         cursor.execute(sql_query, (user.userid, user.user)) # representa al objeto user
         conn.commit()
+
+### Review functions
+
+def add_review(review): # needs an object that represents all of the information of the review
+    sql_query = '''INSERT OR IGNORE INTO Books (BookID, Title, ISBN, ISBN13, Language, PublicationYear, Publisher, NumPages)
+    VALUES (?,?,?,?,?,?,?,?)'''
+    with closing(conn.cursor()) as cursor:
+        cursor.execute(sql_query, (book.bookid, book.title, book.isbn, book.isbn13,
+                                   book.language, book.publication_year, book.publisher,
+                                   book.num_pages)) # representa al objeto book
+        conn.commit()
