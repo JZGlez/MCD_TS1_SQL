@@ -38,14 +38,13 @@ class User:
         self.user = user
 
 class Review:
-    def __init__(self, reviewid=0, review=None, isbn=None, isbn13=None,
-                 language=None, publication_year=None, publisher=None,
-                 num_pages=None):
+    def __init__(self, userid=None, bookid=None, reviewid=None, rating=None, review=None,
+                 review_date=None, num_votes=None, num_comments=None):
+        self.userid = userid
+        self.bookid = bookid
         self.reviewid = reviewid
+        self.rating = rating
         self.review = review
-        self.isbn = isbn
-        self.isbn13 = isbn13
-        self.language = language
-        self.publication_year = publication_year
-        self.publisher = publisher
-        self.num_pages = num_pages
+        self.review_date = review_date
+        self.num_votes = num_votes
+        self.num_comments = num_comments
