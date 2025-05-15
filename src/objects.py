@@ -36,3 +36,15 @@ class User:
     def __init__(self, userid=0, user=None):
         self.userid = userid
         self.user = user
+
+class Review:
+    def __init__(self, userid=None, bookid=None, reviewid=None, rating=None, review=None,
+                 review_date=None, num_votes=None, num_comments=None):
+        self.userid = userid
+        self.bookid = bookid
+        self.reviewid = reviewid
+        self.rating = rating
+        self.review = review
+        self.review_date = review_date
+        self.num_votes = num_votes
+        self.num_comments = num_comments

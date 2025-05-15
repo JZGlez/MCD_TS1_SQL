@@ -3,7 +3,7 @@
 import pandas as pd
 import sqlite3 as sql
 from contextlib import closing
-from objects import Author, Book, Genre, BookAuthor, BookGenre
+from objects import Author, Book, Genre, BookAuthor, BookGenre, Review
 
 # Variable global que representa el string de conexion
 conn = None
@@ -85,8 +85,20 @@ def get_genres_dictionary():
 ### User functions
 
 def add_user(user): # needs an object that represents all of the information of the user
-    sql_query = '''INSERT OR IGNORE INTO Users (UserID, User)
+    sql_query = '''INSERT OR IGNORE INTO Users (UserID, UserName)
     VALUES (?,?)'''
     with closing(conn.cursor()) as cursor:
         cursor.execute(sql_query, (user.userid, user.user)) # representa al objeto user
+        conn.commit()
+
+### Review functions
+
+def add_review(review): # needs an object that represents all of the information of the review
+    sql_query = '''INSERT OR IGNORE INTO Reviews (UserID, BookID, ReviewID, Rating, Review,
+    ReviewDate, NumVotes, NumComments)
+    VALUES (?,?,?,?,?,?,?,?)'''
+    with closing(conn.cursor()) as cursor:
+        cursor.execute(sql_query, (review.userid, review.bookid, review.reviewid, review.rating,
+                                   review.review, review.review_date, review.num_votes,
+                                   review.num_comments)) # representa al objeto review
         conn.commit()

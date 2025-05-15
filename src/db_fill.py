@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from objects import Author, Book, Genre, BookAuthor, BookGenre, User
+from objects import Author, Book, Genre, BookAuthor, BookGenre, User, Review
 import db_functions
 from utils import remove_extra_spaces, get_genre_id, get_author_id
 import os
@@ -12,7 +12,7 @@ df = df.drop(axis=0, index=11098) # parche
 df["Author"] = df["Author"].str.replace('"',"'")
 df['publication_date'] = pd.to_datetime(df['publication_date'], format='%m/%d/%Y')
 
-df_reviews = pd.read_csv('__/data/goodreads_reviews_formated.csv')
+df_reviews = pd.read_csv('../data/goodreads_reviews_formated.csv')
 
 # abrir conexion
 db_functions.connect()
@@ -60,7 +60,7 @@ array_genres_unique = pd.Series(flat_list_genres_cap).unique()
 for genre_name in array_genres_unique:
     genre = Genre(genre_name=genre_name)
     db_functions.add_genre(genre)
-print("Tabla de géneros llenada")
+print("Genres table filled!")
 
 # Fill BookAuthors table
 
@@ -80,7 +80,7 @@ for index, row in df.iterrows():
             db_functions.add_bookAuthor(bookAuthor)
         else:
             print(f"Author {author} not found!")
-print("Tabla de BookAuthors llenada")
+print("BookAuthors table filled!")
 
 # Fill BookGenres table
 genres_dictionary = db_functions.get_genres_dictionary()
@@ -101,7 +101,7 @@ for index, row in df.iterrows():
         else:
             print(f"Genre {genre} not found!")        
 
-print("Tabla de BookGenres llenada")
+print("BookGenres table filled!")
 
 # Fill users table
 users_list = list(zip(df_reviews['user_id'],df_reviews['user']))
@@ -111,6 +111,24 @@ for element in users_list:
                 user=element[1])
     db_functions.add_user(user=user)
 print("User table filled!")
+
+# Fill reviews table
+
+review_list = list(zip(df_reviews['user_id'], df_reviews['book_id'], df_reviews['review_id'],
+                        df_reviews['rating'], df_reviews['review_text'], df_reviews['date_added'],
+                        df_reviews['n_votes'], df_reviews['n_comments']))
+
+for element in review_list:
+    review = Review(userid=element[0],
+                    bookid=element[1],
+                    reviewid=element[2],
+                    rating=element[3],
+                    review=element[4],
+                    review_date=element[5],
+                    num_votes=element[6],
+                    num_comments=element[7])
+    db_functions.add_review(review=review)
+print("Review table filled!")
 
 # Close connection to database
 db_functions.close()
