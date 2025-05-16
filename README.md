@@ -5,17 +5,22 @@ Repositorio para proyecto final de Tópicos Selectos de Grandes Bases de Datos I
 Este software fue desarrollado como proyecto final del curso "Tópicos Selectos de Grandes Bases de Datos I", con el objetivo de crear un sistema que permita almacenar, consultar y modificar información relacionada con libros, sus autores, géneros, usuarios y calificaciones. Utiliza SQLite como gestor de base de datos y Python como lenguaje de programación principal para el manejo de datos, interacción con la base de datos y la construcción del sistema.
 
 # Como ejecutar el proyecto:
-Requisitos previos:
+- Requisitos previos:
+ Python >= 3.7
 Clonar el repositorio:
-
+```git clone https://github.com/JZGlez/MCD_TS1_SQL.git```
+```cd MCD_TS1_SQ```
 Instalar las dependencias indicadas en requirements.txt
-  ```pip install -r requirements.txt
+  ```pip install -r requirements.txt```
+
+- Instalar la Base de Datos
 Ejecutar create_db.py para crear las tablas (si aún no han sido creadas):
-  ```python src/create_db.py
+  ```python src/create_db.py```
 Ejecutar db_fill.py para poblar la base de datos con datos CSV (si aún no han sido llenadas):
-  ```python src/db_fill.py
-Ejecutar el programa principal
-  ```python main.py
+  ```python src/db_fill.py```
+
+- Ejecutar el programa principal
+  ```python main.py```
 
 # Estructura de archivos 
 MCD_TS1_SQL
