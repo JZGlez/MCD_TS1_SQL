@@ -16,12 +16,15 @@ Este software fue desarrollado como proyecto final del curso "Tópicos Selectos 
 ### Instalar las dependencias indicadas en requirements.txt
 ```pip install -r requirements.txt```
 
-### Correr el proceso completo junto
+### Ejecutar el programa principal
 
-Ejecutar `create_db.py` para crear la base de datos:
+```python main.py```
 
-```bash
-python src/create_db.py
+## Iniciar el programa por partes
+### Instalar la Base de Datos
+Ejecutar create_db.py para crear las tablas (si aún no han sido creadas):
+
+```python src/create_db.py```
 
 Ejecutar db_fill.py para poblar la base de datos con datos CSV (si aún no han sido llenadas):
 
@@ -34,9 +37,6 @@ Para trabajar con la base de datos de forma visual, se puede usar la GUI con Tki
 
 ```python gui_app.py```
 
-### Ejecutar el programa principal
-```python main.py```
-
 ---
 
 # Estructura de archivos 
@@ -44,6 +44,7 @@ Para trabajar con la base de datos de forma visual, se puede usar la GUI con Tki
 ```
 MCD_TS1_SQL
 │
+├── main.py                    # Archivo principal
 ├── README.md                  # Documentación del proyecto
 ├── requirements.txt           # Lista de dependencias de Python
 │
