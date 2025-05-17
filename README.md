@@ -2,7 +2,9 @@
 ## Sistema de Gestión de Libros con SQLite
 Repositorio para proyecto final de Tópicos Selectos de Grandes Bases de Datos I
 
-<p>Este software fue desarrollado como proyecto final del curso "Tópicos Selectos de Grandes Bases de Datos I", con el objetivo de crear un sistema que permita almacenar, consultar y modificar información relacionada con libros, sus autores, géneros, usuarios y calificaciones. Utiliza SQLite como gestor de base de datos y Python como lenguaje de programación principal para el manejo de datos, interacción con la base de datos y la construcción del sistema.</p>
+<p style="text-align: justify;">
+Este software fue desarrollado como proyecto final del curso "Tópicos Selectos de Grandes Bases de Datos I", con el objetivo de crear un sistema que permita almacenar, consultar y modificar información relacionada con libros, sus autores, géneros, usuarios y calificaciones. Utiliza SQLite como gestor de base de datos y Python como lenguaje de programación principal para el manejo de datos, interacción con la base de datos y la construcción del sistema.
+</p>
 
 ---
 
@@ -21,7 +23,8 @@ Repositorio para proyecto final de Tópicos Selectos de Grandes Bases de Datos I
 ```python main.py```
 
 ## Iniciar el programa por partes:
-Nos movemos a la carpeta src para ejecutar los siguientes archivos:
+Navegar a la carpeta src para ejecutar los siguientes archivos:
+
 ```cd src```
 
 ### Instalar la Base de Datos
@@ -94,12 +97,13 @@ MCD_TS1_SQL
 
 ### `gui_app.py`
 
-<p>- Proporciona una interfaz gráfica usando Tkinter para manipular los datos contenidos en la base de datos.
+
+- Proporciona una interfaz gráfica usando Tkinter para manipular los datos contenidos en la base de datos.
 - Permite seleccionar cualquier tabla cargada dinámicamente y visualizarla en una vista tipo tabla.
 - Incluye funciones de búsqueda por texto, y botones para agregar, actualizar y eliminar registros.
 - El campo de clave primaria (ID) se maneja automáticamente cuando es autoincremental (no se pide al usuario al insertar).
 - Solicita confirmación antes de eliminar registros, y protege los campos clave de ser modificados.
-- Carga automática de los datos tras cada operación, sin necesidad de reiniciar la aplicación.</p>
+- Carga automática de los datos tras cada operación, sin necesidad de reiniciar la aplicación.
 
 
 ### `utils.py`
