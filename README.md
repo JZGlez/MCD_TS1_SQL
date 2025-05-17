@@ -17,8 +17,24 @@ Este software fue desarrollado como proyecto final del curso "Tópicos Selectos 
 ```pip install -r requirements.txt```
 
 ### Correr el proceso completo junto
-Ejecutar main.py:
 
+Ejecutar `create_db.py` para crear la base de datos:
+
+```bash
+python src/create_db.py
+
+Ejecutar db_fill.py para poblar la base de datos con datos CSV (si aún no han sido llenadas):
+
+```python src/db_fill.py```
+
+### Ejecutar la interfaz gráfica
+Para trabajar con la base de datos de forma visual, se puede usar la GUI con Tkinter:
+
+```cd src```
+
+```python gui_app.py```
+
+### Ejecutar el programa principal
 ```python main.py```
 
 ---
@@ -35,7 +51,7 @@ MCD_TS1_SQL
 │   ├── create_db.py           # Creación de la base de datos y tablas
 │   ├── db_fill.py             # Relleno de las tablas con datos CSV
 │   ├── db_functions.py        # Funciones de conexión y manipulación de la BD
-│   ├── gui_app.py             # Maneja la interfaz gráfica
+│   ├── gui_app.py             # Interfaz gráfica con Tkinter
 │   ├── objects.py             # Definición de las clases de objetos
 │   ├── utils.py               # Funciones utilitarias
 │
@@ -73,6 +89,16 @@ MCD_TS1_SQL
 - `add_author(author)`, `add_book(book)`, `add_genre(genre)`, `add_user(user)`, `add_review(review)`
 - `add_bookGenre(bookGenre)`, `add_bookAuthor(bookAuthor)`
 - `get_authors_dictionary()`: Consulta auxiliar.
+
+### `gui_app.py`
+
+- Proporciona una interfaz gráfica usando Tkinter para manipular los datos contenidos en la base de datos.
+- Permite seleccionar cualquier tabla cargada dinámicamente y visualizarla en una vista tipo tabla.
+- Incluye funciones de búsqueda por texto, y botones para agregar, actualizar y eliminar registros.
+- El campo de clave primaria (ID) se maneja automáticamente cuando es autoincremental (no se pide al usuario al insertar).
+- Solicita confirmación antes de eliminar registros, y protege los campos clave de ser modificados.
+- Carga automática de los datos tras cada operación, sin necesidad de reiniciar la aplicación.
+
 
 ### `utils.py`
 
